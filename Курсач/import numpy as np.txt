@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import lognorm
+
+# Генерируем случайные параметры
+mu = np.random.normal(0, 1)
+sigma = np.random.uniform(0, 1)
+scale = np.exp(mu)
+s = sigma
+
+# Определяем диапазон значений
+x = np.linspace(0, 180, 1000)
+
+# Вычисляем теоретическую функцию распределения
+cdf = lognorm.cdf(x, s=s, scale=scale)
+
+# Строим график
+plt.plot(x, cdf, label='Theoretical')
+
+# Добавляем оформление графика
+plt.title('Lognormal distribution with random parameters')
+plt.xlabel('Value')
+plt.ylabel('Cumulative probability')
+plt.legend()
+plt.show()
